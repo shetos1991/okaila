@@ -1,0 +1,4 @@
+﻿*.bin linguist-vendored
+*.png linguist-vendored
+host/*.js linguist-language=JavaScript
+host/*.html linguist-language=HTML

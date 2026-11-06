@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SheTos PS4 PS5 - Exploit Host 7.00-13.00</title>
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        /* تثبيت اسم SheTos باللون الذهبي الثابت */
+        .name-SheTos {
+            color: #ffd700 !important;
+            font-weight: 900 !important;
+            font-size: 3rem !important;
+            letter-spacing: 5px !important;
+            font-family: 'Orbitron', sans-serif !important;
+            text-shadow: 0 0 20px rgba(255, 215, 0, 0.4) !important;
+            display: block !important;
+            background: none !important;
+            -webkit-background-clip: unset !important;
+            -webkit-text-fill-color: #ffd700 !important;
+            animation: none !important;
+        }
+
+        /* ======== ran page only: move the whole information block to the left ======== */
+        body {
+            display: flex !important;
+            justify-content: flex-start !important;
+            align-items: center !important;
+            padding: 20px !important;
+        }
+
+        .container {
+            width: 315px !important;
+            max-width: 315px !important;
+            margin: 0 !important;
+            text-align: center !important;
+            z-index: 20 !important;
+        }
+
+        /* Keep the main SheTos title exactly at its original size */
+        .name-SheTos {
+            font-size: 3rem !important;
+        }
+
+        /* Enlarge the rest of the text */
+        .ps4-title,
+        .ps5-title {
+            font-size: 2.6rem !important;
+        }
+
+        .subtitle {
+            font-size: 1.5rem !important;
+        }
+
+        .version-badge {
+            font-size: 1.22rem !important;
+            padding: 10px 24px !important;
+        }
+
+        .status-text {
+            display: block !important;
+            font-size: 1.3rem !important;
+            line-height: 1.2 !important;
+            font-weight: 600 !important;
+            text-shadow: 0 1px 4px rgba(0, 0, 0, 0.9) !important;
+        }
+
+        .credit {
+            font-size: 1.3rem !important;
+        }
+
+        .credit-link {
+            font-size: 1.45rem !important;
+        }
+
+        .thanks {
+            font-size: 1.1rem !important;
+        }
+
+
+        .trainer-link {
+            display: inline-block;
+            margin-top: 18px;
+            padding: 12px 18px;
+            border: 1px solid rgba(255,255,255,.35);
+            border-radius: 8px;
+            background: rgba(0,140,255,.22);
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.15rem;
+            font-weight: 700;
+        }
+        .trainer-link:focus, .trainer-link:hover {
+            background: rgba(0,140,255,.38);
+            outline: none;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 12px !important;
+            }
+
+            .container {
+                width: 300px !important;
+                max-width: 300px !important;
+            }
+
+            /* Override the shared mobile CSS so SheTos stays at the same desktop size */
+            .name-SheTos {
+                font-size: 3rem !important;
+            }
+
+            .ps4-title,
+            .ps5-title {
+                font-size: 2.25rem !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1 class="main-title">
+                <span class="name-SheTos">SheTos</span>
+                <span class="ps4-title">PS4</span>
+                <span class="ps5-title">PS5</span>
+            </h1>
+            <div class="subtitle">Exploit Host</div>
+            <div class="version-badge">FW 7.00 - 13.00</div>
+        </header>
+        
+        <hr class="separator">
+
+        <div class="status-bar">
+            <span id="msgs" class="status-text loading">Loading GoldHEN v2.4b18.10... Please Wait</span>
+        </div>
+
+        <a class="trainer-link" href="../gta-trainer/index.html">GTA V Trainer</a>
+        
+        <footer>
+            <p class="credit">Designed by <a href="#" class="credit-link">SheTos</a></p>
+            <p class="thanks">Special thanks to all scene developers</p>
+        </footer>
+    </div>
+
+    <script>
+        // ======== نفس المنطق البرمجي الأصلي تماماً ========
+        var uaFull = navigator.userAgent;
+        var match = uaFull.match(/PlayStation 4[ /]([\d.]+)/i);
+        var isPS4 = match !== null;
+        var fwVersion = isPS4 ? match[1] : "Unknown";
+        var fwNum = parseFloat(fwVersion);
+
+        var msgs = document.getElementById('msgs');
+
+        function onScriptError() {
+            msgs.innerHTML = "Content not Found! - Clear Browser Data and Re-Install Cache ...";
+        }
+
+        if (!isPS4) {
+            document.addEventListener("DOMContentLoaded", () => {
+                msgs.innerHTML = "Only for PS4 with Firmware 7.00 to 13.00";
+                msgs.className = "status-text error";
+            });
+        } else {
+            if (window.applicationCache.status == '0') {
+                if (fwNum >= 7.00 && fwNum <= 8.52) {
+                    msgs.innerHTML = "Installing Cache for FW " + fwVersion + "...";
+                    setTimeout(function() {
+                        window.location.replace("cache700.html");
+                    }, 500);
+                } else if (fwNum >= 9.00 && fwNum <= 9.60) {
+                    msgs.innerHTML = "Installing Cache for FW " + fwVersion + "...";
+                    setTimeout(function() {
+                        window.location.replace("cache900.html");
+                    }, 500);
+                } else if (fwNum >= 10.00 && fwNum <= 11.02) {
+                    msgs.innerHTML = "Installing Cache for FW " + fwVersion + "...";
+                    setTimeout(function() {
+                        window.location.replace("cachecss.html");
+                    }, 500);
+                } else if (fwNum >= 11.50 && fwNum <= 13.00) {
+                    msgs.innerHTML = "Installing Cache for FW " + fwVersion + "...";
+                    setTimeout(function() {
+                        window.location.replace("cacheslopkit.html");
+                    }, 500);
+                } else {
+                    document.addEventListener("DOMContentLoaded", () => {
+                        msgs.innerHTML = 'Unsupported Firmware: <span style="color: red;">' + fwVersion + '</span>';
+                        msgs.className = "status-text error";
+                    });
+                }
+            } else {
+                // التحميل التلقائي للـ exploit - بدون أي أزرار
+                if (fwNum >= 7.00 && fwNum <= 8.52) {
+                    msgs.innerHTML = "Loading Exploit for FW " + fwVersion + "...";
+                    var script = document.createElement('script');
+                    script.type = 'module';
+                    script.src = "700/alert.js";
+                    script.onerror = onScriptError;
+                    document.head.appendChild(script);
+                }
+                else if (fwNum >= 9.00 && fwNum <= 9.60) {
+                    msgs.innerHTML = "Loading Exploit for FW " + fwVersion + "...";
+                    var script = document.createElement('script');
+                    script.type = 'module';
+                    script.src = "900/alert.js";
+                    script.onerror = onScriptError;
+                    document.head.appendChild(script);
+                }
+                else if (fwNum >= 10.00 && fwNum <= 11.02) {
+                    msgs.innerHTML = "Loading Exploit for FW " + fwVersion + "...";
+                    var script = document.createElement('script');
+                    script.src = "css/main.js";
+                    script.onerror = onScriptError;
+                    script.onload = function () {
+                        setTimeout(function () {
+                            doJb();
+                        }, 500);
+                    };
+                    document.head.appendChild(script);
+                }
+                else if (fwNum >= 11.50 && fwNum <= 12.02) {
+                    msgs.innerHTML = "Loading Exploit for FW " + fwVersion + "...";
+                    var script = document.createElement('script');
+                    script.type = 'module';
+                    script.src = "slopkit/chain_lapse.js";
+                    script.onerror = onScriptError;
+                    document.head.appendChild(script);
+                }
+                else if (fwNum >= 12.50 && fwNum <= 13.00) {
+                    msgs.innerHTML = "Loading Exploit for FW " + fwVersion + "...";
+                    var script = document.createElement('script');
+                    script.type = 'module';
+                    script.src = "slopkit/chain_poops.js";
+                    script.onerror = onScriptError;
+                    document.head.appendChild(script);
+                }
+            }
+        }
+    </script>
+</body>
+</html>

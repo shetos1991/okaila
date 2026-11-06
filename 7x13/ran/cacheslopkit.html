@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html manifest="slopkit.manifest">
+<head>
+    <title>SheTos PS4 PS5 - Cache 11.50-13.00</title>
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        /* تثبيت اسم SheTos باللون الذهبي الثابت */
+        .name-SheTos {
+            color: #ffd700 !important;
+            font-weight: 900 !important;
+            font-size: 3rem !important;
+            letter-spacing: 5px !important;
+            font-family: 'Orbitron', sans-serif !important;
+            text-shadow: 0 0 20px rgba(255, 215, 0, 0.4) !important;
+            display: block !important;
+            background: none !important;
+            -webkit-background-clip: unset !important;
+            -webkit-text-fill-color: #ffd700 !important;
+            animation: none !important;
+        }
+
+        .trainer-link {
+            display: inline-block;
+            margin-top: 18px;
+            padding: 12px 18px;
+            border: 1px solid rgba(255,255,255,.35);
+            border-radius: 8px;
+            background: rgba(0,140,255,.22);
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.15rem;
+            font-weight: 700;
+        }
+        .trainer-link:focus, .trainer-link:hover {
+            background: rgba(0,140,255,.38);
+            outline: none;
+        }
+    </style>
+
+    <style>
+        /* Cache pages only: keep the information block on the left */
+        body {
+            display: flex !important;
+            justify-content: flex-start !important;
+            align-items: center !important;
+            padding: 20px !important;
+        }
+
+        .container {
+            width: 315px !important;
+            max-width: 315px !important;
+            margin: 0 !important;
+            text-align: center !important;
+            z-index: 20 !important;
+        }
+
+        /* Keep SheTos at its current size */
+        .name-SheTos {
+            font-size: 3rem !important;
+        }
+
+        /* Enlarge all other text */
+        .ps4-title,
+        .ps5-title {
+            font-size: 2.6rem !important;
+        }
+
+        .subtitle {
+            font-size: 1.5rem !important;
+        }
+
+        .version-badge {
+            font-size: 1.22rem !important;
+            padding: 10px 24px !important;
+        }
+
+        .status-text {
+            display: block !important;
+            font-size: 1.3rem !important;
+            line-height: 1.2 !important;
+            font-weight: 600 !important;
+            text-shadow: 0 1px 4px rgba(0, 0, 0, 0.9) !important;
+        }
+
+        .credit {
+            font-size: 1.3rem !important;
+        }
+
+        .credit-link {
+            font-size: 1.45rem !important;
+        }
+
+        .thanks {
+            font-size: 1.1rem !important;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 12px !important;
+            }
+
+            .container {
+                width: 300px !important;
+                max-width: 300px !important;
+            }
+
+            .name-SheTos {
+                font-size: 3rem !important;
+            }
+
+            .ps4-title,
+            .ps5-title {
+                font-size: 2.25rem !important;
+            }
+        }
+
+        .trainer-link {
+            display: inline-block;
+            margin-top: 18px;
+            padding: 12px 18px;
+            border: 1px solid rgba(255,255,255,.35);
+            border-radius: 8px;
+            background: rgba(0,140,255,.22);
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.15rem;
+            font-weight: 700;
+        }
+        .trainer-link:focus, .trainer-link:hover {
+            background: rgba(0,140,255,.38);
+            outline: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1 class="main-title">
+                <span class="name-SheTos">SheTos</span>
+                <span class="ps4-title">PS4</span>
+                <span class="ps5-title">PS5</span>
+            </h1>
+            <div class="subtitle">Exploit Host</div>
+            <div class="version-badge">FW 11.50 - 13.00</div>
+        </header>
+        
+        <hr class="separator">
+        
+        <div class="status-bar">
+            <span id="msgs" class="status-text loading">Starting Cache Installation...</span>
+        </div>
+        <a class="trainer-link" href="../gta-trainer/index.html">GTA V Trainer</a>
+        
+        <footer>
+            <p class="credit">Designed by <a href="#" class="credit-link">SheTos</a></p>
+            <p class="thanks">Special thanks to all scene developers</p>
+        </footer>
+    </div>
+
+    <script>
+        history.replaceState(null, null, 'index.html');
+        var histlength = history.length;
+        history.go(-histlength);
+        
+        var msgs = document.getElementById('msgs');
+        
+        function DLProgress(e) {
+            var Percent = Math.round(e.loaded / e.total * 100);
+            msgs.innerHTML = "Installing Offline Cache: " + Percent + "%";
+        }
+        
+        function DisplayCacheProgress() {
+            msgs.innerHTML = "Cache Installed Successfully";
+            msgs.className = "status-text success";
+            setTimeout(function() {
+                msgs.innerHTML = "Now Close And Re-Open Your Browser ...";
+            }, 1500);
+        }
+        
+        window.applicationCache.addEventListener("progress", DLProgress, false);
+        window.applicationCache.oncached = function(e) { DisplayCacheProgress(); };
+        window.applicationCache.onupdateready = function(e) { DisplayCacheProgress(); };
+        window.applicationCache.onerror = function(e) {
+            msgs.innerHTML = "Error Installing Cache! - Clear and Re-Open Your Browser ...";
+            msgs.className = "status-text error";
+        };
+    </script>
+</body>
+</html>
